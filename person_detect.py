@@ -99,7 +99,8 @@ class PersonDetect:
         p_frame = cv2.resize(image, (self.input_shape[3], self.input_shape[2]))
         p_frame = p_frame.transpose((2,0,1))
         p_frame = p_frame.reshape(1, *p_frame.shape)
-        return {self.input_name: p_frame}
+        
+        return p_frame
 
     
 

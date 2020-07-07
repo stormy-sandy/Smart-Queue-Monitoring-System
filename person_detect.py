@@ -29,8 +29,9 @@ class Queue:
             for i, q in enumerate(self.queues):
                 if coord[0]>q[0] and coord[2]<q[2]:
                     d[i+1]+=1
+                    
+        
         return d
-
 
 class PersonDetect:
     '''
@@ -62,7 +63,9 @@ class PersonDetect:
         outputs = self.net.infer({self.input_name: p_frame})
         coords = self.preprocess_outputs(outputs[self.output_name])
         self.draw_outputs(coords, image)
-        return coords, image
+        
+        post_image,post_coord=self.draw_outputs(coords, image)
+        return post_image,post_coord
     
     def draw_outputs(self, coords, image):
         width = image.shape[1]
@@ -93,6 +96,8 @@ class PersonDetect:
             if thresh >= self.threshold:
                 xmin,ymin,xmax,ymax = box[3],box[4],box[5],box[6] 
                 cords.append((xmin, ymin, xmax, ymax))
+                
+                
         return cords
 
     def preprocess_input(self, image):

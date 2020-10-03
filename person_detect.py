@@ -67,7 +67,8 @@ class PersonDetect:
         post_image,post_coord=self.draw_outputs(coords, image)
         return post_image,post_coord
     
-    def draw_outputs(self, coords, image):
+    @staticmethod
+    def draw_outputs(coords, image):
         width = image.shape[1]
         height = image.shape[0]
         box=[]

@@ -1,10 +1,9 @@
 import numpy as np
 import time
-from openvino.inference_engine import IENetwork, IECore
+from openvino.inference_engine import IECore
 import os
 import cv2
 import argparse
-import sys
 
 
 class Queue:
